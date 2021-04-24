@@ -2,31 +2,38 @@ package com.test;
 import java.util.Scanner;
 public class Maxminstr {
 	public static void main(String[] args) {
-	System.out.println("Enter the string:");
-	Scanner sc=new Scanner(System.in);
-	String str=sc.nextLine();
-	int max=-1;
-	int min=-1;
-	//String res;
-	for(int i=0;i<str.length();i++) {
-	if(min<str.charAt(i)) {
-		min=str.charAt(i);
-		System.out.println("min char:"+str.charAt(i));}
-	}
-	for(int i=0;i<str.length();i++) {
-		if(max>str.charAt(i)) {
-			max=str.charAt(i);
-			System.out.println("max char:"+str.charAt(i));
+	String s="hello";
+		int f[]=new int[s.length()];
+		char min=s.charAt(0),max=s.charAt(0);
+		int i,j,min1,max1;
+		char string[]=s.toCharArray();
+		for(i=0;i<string.length;i++)
+		{
+			f[i]=1;
+			for(j=i+1;j<string.length;j++)
+			{
+				if(string[i]==string[j] && string[i]!=' ' && string[i]!='0')
+				{
+					f[i]++;
+					string[j]='0';
+				}
+			}
 		}
-	}
-	
-	
-	/*int[] f=new int[str.length()];
-	char minchar=str.charAt(0),maxchar=str.charAt(0);
-	int i,j,min,max;
-	char string[]=str.tocharArry();
-	for(i=0;i<string.length;i++)
-		f[i]=1;
-	for*/
+		min1=max1=f[0];
+		for(i=0;i<f.length;i++)
+		{
+			if(min1>f[i] && f[i]!='0')
+			{
+				min1=f[i];
+				min=string[i];
+			}
+			if(max1<f[i])
+			{
+				max1=f[i];
+				max=string[i];
+			}
+		}
+		System.out.println("Minimum Occurence Of Character: "+min);
+		System.out.println("Maximum Occurence Of Character: "+max);
 	}
 	}
